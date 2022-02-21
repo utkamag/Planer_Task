@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Planer Task</title>
+</head>
+<body>
+
+<! -- Заголовок -->
+<div class="title">
+    <h1>Планирование задач на февраль</h1>
+</div>
+
+<! -- Таблица с задачами и ответственными лицами -->
+
+<div class="table">
+    <table class="table_main">
+        <thead>
+        <! -- Список работников и даты  -->
+        <tr>
+            <th id="workers">Работники</th>
+            <th class="data">01.02</th>
+            <th class="data">02.02</th>
+            <th class="data">03.02</th>
+            <th class="data">04.02</th>
+            <th class="data">05.02</th>
+            <th class="data">06.02</th>
+            <th class="data">07.02</th>
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+        </tbody>
+
+    </table>
+</div>
+
+
+<! -- Backlog -->
+
+<h1 class="title">Список задач</h1>
+
+<div class="backlog">
+    <div class="backlog_base">
+        <table class="table_second">
+            <tbody id="tbodys"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>

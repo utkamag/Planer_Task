@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* Title */
+
+.title {
+    text-align: center;
+}
+
+/* Table */
+
+.table {
+    overflow-x: auto;
+}
+
+.table_main {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.table_main tr {
+    background-color: #f8f8f8;
+}
+.table_main th {
+    text-align: center;
+    padding: 8px;
+    border: 2px solid #ddd;
+    font-weight: bold;
+}
+
+#workers {
+    background: green;
+}
+.data {
+    background: cadetblue;
+}
+
+/* Backlog */
+
+.backlog {
+    display: flex;
+    justify-content: center;
+}
+
+.backlog_base {
+    display: flex;
+    justify-content: center;
+
+    height: auto;
+    width: auto;
+    padding: 70px;
+    background: bisque;
+    margin-bottom: 20px;
+}
+
+#tbodys{
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.table_second th {
+    padding: 5px;
+}
