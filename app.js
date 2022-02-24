@@ -91,17 +91,39 @@ const staff = [{
 function mainTable(data) {
     // Добавляем главные элемент таблицы
     let tbody = document.getElementById("tbody")
-    // Проходим циклом по массивы данных
+    // Проходим циклом по массиву данных
     for (let i = 0; i < data.length; i++) {
         let row = `<tr>
-                            <th>${data[i].surname}</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th class="th_main_table_workers">${data[i].surname}</th>
+                                                       
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
+                            <th class="th_main_table"></th>
                                    </tr>`
 
         tbody.innerHTML += row
@@ -112,9 +134,9 @@ function mainTable(data) {
 mainTable(staff)
 
 
-    // Массив с задачами
+// Массив с задачами
 
-   let tasks = [{
+let tasks = [{
     "id": "ad528fba-d583-439b-af1c-d7d6a206ac53",
     "subject": "Анализ",
     "description": "",
@@ -428,12 +450,13 @@ mainTable(staff)
     "order": 1
 }]
 
+
 // Выводим данные в бэклог
 
-function secondTable(array){
-    for (let i = 0; i < array.length; i++){
+function secondTable(array) {
+    for (let i = 0; i < array.length; i++) {
         let row_2 = `<tr>
-                      <th>${array[i].subject}</th>
+                      <th class="th_second_table">${array[i].subject}</th>
         </tr>`
         tbodys.innerHTML += row_2
     }
@@ -441,15 +464,59 @@ function secondTable(array){
 
 secondTable(tasks)
 
-// Event listener
-hy = (event) => {
-    console.log(event.currentTarget)
+
+// Добавляем обработчик событий на клик, в списке заданий в бэклоге (Используем LocalStorage)
+
+secondTableClick = (event) => {
+    localStorage.setItem("test", event.target.innerHTML)
+
 }
 
-let abc = document.querySelectorAll(".data")
+let secondTableCommands = document.querySelectorAll(".th_second_table")
 
-abc.forEach(abcd =>{
-    abcd.addEventListener("click", hy)
+secondTableCommands.forEach(secondTableCommand => {
+    secondTableCommand.addEventListener("click", secondTableClick)
 })
 
+
+// Добавляем обработчик событий на главную таблицу
+
+mainTableClick = (event) => {
+
+    let result = prompt(`Вы выбрали задачу: ${localStorage.getItem("test")}, запишите сколько времени потребуется на ее выполнение`)
+
+    event.target.innerHTML = result
+
+}
+
+let mainTableCommands = document.querySelectorAll(".th_main_table")
+
+mainTableCommands.forEach(mainTableCommand => {
+    mainTableCommand.addEventListener("click", mainTableClick)
+})
+
+
+// Выводим в alert задачу по клику на правую кнопку мыши
+
+mainTableCommands.forEach(mainTableCom => {
+    mainTableCom.addEventListener("contextmenu", function (e){
+        alert(`На данном сотруднике задача: ${localStorage.getItem("test")}`)
+    })
+})
+
+// Зачеркиваем задачи после их использования
+
+secondTableCommands.forEach(secondTableCom => {
+    secondTableCom.addEventListener("click", function (event){
+        event.target.classList.add("line")
+    })
+})
+
+// Двойной клик отменяет перечеркивание
+
+secondTableCommands.forEach(secondTable => {
+    secondTable.addEventListener("dblclick", function (event){
+        event.target.classList.remove("line")
+    })
+})
 

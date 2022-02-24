@@ -9,37 +9,61 @@ body {
     box-sizing: border-box;
 }
 
+p {
+    margin: 2px;
+}
+
 /* Title */
 
 .title {
     text-align: center;
 }
 
-/* Table */
+/* Main Table */
 
 .table {
     overflow-x: auto;
+    padding: 20px;
 }
 
 .table_main {
+    box-shadow: 10px 5px 5px gray;
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
 }
+
+.th_main_table:empty {
+    background: cornsilk;
+}
+
+.th_main_table {
+    background: green;
+    transition: linear, 0.2s;
+}
+
+.th_main_table:hover {
+    background: wheat;
+}
+
 
 .table_main tr {
     background-color: #f8f8f8;
 }
 .table_main th {
     text-align: center;
-    padding: 8px;
+    padding: 15px;
     border: 2px solid #ddd;
     font-weight: bold;
 }
 
-#workers {
-    background: green;
+.th_main_table_workers {
+    background: burlywood;
 }
+
+#workers {
+    background: chocolate;
+}
+
 .data {
     background: cadetblue;
 }
@@ -52,14 +76,20 @@ body {
 }
 
 .backlog_base {
-    display: flex;
-    justify-content: center;
+    text-align: left;
 
     height: auto;
     width: auto;
-    padding: 70px;
+    padding: 40px;
     background: bisque;
     margin-bottom: 20px;
+}
+
+.backlog_choose {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #tbodys{
@@ -70,5 +100,33 @@ body {
 }
 
 .table_second th {
+    user-select: none;
     padding: 5px;
+    color: #414040;
+    transition: 0.5s, linear;
 }
+
+.table_second th:hover {
+    padding: 5px;
+    color: mediumseagreen;
+    cursor: pointer;
+}
+
+.table_second th:focus {
+    padding: 5px;
+    color: mediumseagreen;
+    cursor: pointer;
+}
+
+.line {
+    text-decoration: line-through;
+}
+
+.descriptoion {
+    padding-top: 10px;
+    color: #414040;
+}
+
+
+
+
