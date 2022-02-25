@@ -127,6 +127,75 @@ p {
     color: #414040;
 }
 
+/* Адаптация под мобильные платформы */
 
+
+/* Планшеты, backlog оставлен */
+@media (max-width: 821px) {
+
+    .title{
+        font-size: 18px;
+    }
+
+    #workers {
+        font-size: 20px;
+    }
+
+    .th_main_table_workers {
+        font-size: 20px;
+    }
+
+    .data {
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .backlog_choose {
+        font-size: 30px;
+    }
+
+    .th_second_table {
+        font-size: 28px;
+    }
+
+    .descriptoion {
+        font-size: 20px;
+    }
+    
+}
+
+/* Смартфоны (backlog исключен)*/
+
+@media (max-width: 420px) {
+
+    .title {
+        font-size: 17px;
+    }
+
+    .table {
+        padding: 3px;
+    }
+
+    .backlog_wrapper {
+        display: none;
+    }
+
+    #workers {
+        font-size: 15px;
+    }
+
+    .th_main_table_workers {
+        font-size: 15px;
+    }
+
+    .data {
+        font-size: 15px;
+    }
+
+    
+}
 
 
