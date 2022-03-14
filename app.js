@@ -1,5 +1,5 @@
 
-// Массив сотрудников организации
+// Ассоциативный массив сотрудников организации
 const staff = [{
     "id": 1,
     "username": "user1",
@@ -91,34 +91,35 @@ function mainTable(data) {
         let row = `<tr>
                             <th class="th_main_table_workers">${data[i].surname}</th>
                                                        
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
-                            <th class="th_main_table"></th>
+                            <th class="th_main_table" id="${data[i].id}" ></th>
+                            <th class="th_main_table" id="${data[i].id+10}" ></th>
+                            <th class="th_main_table" id="${data[i].id+20}" ></th>
+                            <th class="th_main_table" id="${data[i].id+30}" ></th>
+                            <th class="th_main_table" id="${data[i].id+40}" ></th>
+                            <th class="th_main_table" id="${data[i].id+50}" ></th>
+                            <th class="th_main_table" id="${data[i].id+60}" ></th>
+                            <th class="th_main_table" id="${data[i].id+70}" ></th>
+                            <th class="th_main_table" id="${data[i].id+80}" ></th>
+                            <th class="th_main_table" id="${data[i].id+90}" ></th>
+                            <th class="th_main_table" id="${data[i].id+100}" ></th>
+                            <th class="th_main_table" id="${data[i].id+110}" ></th>
+                            <th class="th_main_table" id="${data[i].id+120}" ></th>
+                            <th class="th_main_table" id="${data[i].id+130}" ></th>
+                            <th class="th_main_table" id="${data[i].id+140}" ></th>
+                            <th class="th_main_table" id="${data[i].id+150}" ></th>
+                            <th class="th_main_table" id="${data[i].id+160}" ></th>
+                            <th class="th_main_table" id="${data[i].id+170}" ></th>
+                            <th class="th_main_table" id="${data[i].id+180}" ></th>
+                            <th class="th_main_table" id="${data[i].id+190}" ></th>
+                            <th class="th_main_table" id="${data[i].id+200}" ></th>
+                            <th class="th_main_table" id="${data[i].id+210}" ></th>
+                            <th class="th_main_table" id="${data[i].id+220}" ></th>
+                            <th class="th_main_table" id="${data[i].id+230}" ></th>
+                            <th class="th_main_table" id="${data[i].id+240}" ></th>
+                            <th class="th_main_table" id="${data[i].id+250}" ></th>
+                            <th class="th_main_table" id="${data[i].id+260}" ></th>
+                            <th class="th_main_table" id="${data[i].id+270}" ></th>
+                            
                                    </tr>`
 
         tbody.innerHTML += row
@@ -129,7 +130,8 @@ function mainTable(data) {
 mainTable(staff)
 
 
-// Массив с задачами
+
+// Ассоциативный массив с задачами
 
 let tasks = [{
     "id": "ad528fba-d583-439b-af1c-d7d6a206ac53",
@@ -445,13 +447,21 @@ let tasks = [{
     "order": 1
 }]
 
+// Объединяем два массива
+
+const array = [...staff, ...tasks]
+
+console.log(array)
+
 
 // Выводим данные в бэклог
+
+// Также добавляем атрибут id, с целью подвязки данных к уникальному id
 
 function secondTable(array) {
     for (let i = 0; i < array.length; i++) {
         let row_2 = `<tr>
-                      <th class="th_second_table">${array[i].subject}</th>
+                      <th class="th_second_table" id=${array[i].id}>${array[i].subject}</th>
         </tr>`
         tbodys.innerHTML += row_2
     }
@@ -478,9 +488,20 @@ secondTableCommands.forEach(secondTableCommand => {
 
 mainTableClick = (event) => {
 
+
     let result = prompt(`Вы выбрали задачу: ${localStorage.getItem("test")}, запишите сколько времени потребуется на ее выполнение`)
 
     event.target.innerHTML = result
+
+    let result_2 = prompt("Введите задачу ")
+
+    let key = `${event.currentTarget.id}`
+
+    localStorage.setItem("key", result_2)
+
+    console.log(localStorage.getItem(`${"event.currentTarget.id"}`))
+
+
 
 }
 
@@ -494,8 +515,14 @@ mainTableCommands.forEach(mainTableCommand => {
 // Выводим в alert задачу по клику на правую кнопку мыши
 
 mainTableCommands.forEach(mainTableCom => {
-    mainTableCom.addEventListener("contextmenu", function (e){
-        alert(`На данном сотруднике задача: ${localStorage.getItem("test")}`)
+    mainTableCom.addEventListener("contextmenu", function (event){
+        if (event.currentTarget.id == 1) {
+            alert("На данном сотруднике задача")
+        }
+        else {
+            alert("Не то")
+            console.log(event.currentTarget.id)
+        }
     })
 })
 
@@ -514,4 +541,5 @@ secondTableCommands.forEach(secondTable => {
         event.target.classList.remove("line")
     })
 })
+
 
