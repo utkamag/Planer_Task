@@ -484,7 +484,7 @@ secondTableCommands.forEach(secondTableCommand => {
 })
 
 
-// Добавляем обработчик событий на главную таблицу
+// Обработчик событий на главную таблицу
 
 mainTableClick = (event) => {
 
